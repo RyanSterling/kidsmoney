@@ -3,7 +3,8 @@ import { supabase } from './supabase';
 import type { Kid, Transaction } from './types';
 import BottomNavigation from './components/BottomNavigation';
 import BalanceDisplay from './components/BalanceDisplay';
-import TransactionForm from './components/TransactionForm';
+import FloatingActionButton from './components/FloatingActionButton';
+import TransactionDrawer from './components/TransactionDrawer';
 import TransactionList from './components/TransactionList';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
   const [balance, setBalance] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   // Fetch transactions when kid changes
   useEffect(() => {
@@ -106,11 +108,19 @@ function App() {
         ) : (
           <>
             <BalanceDisplay balance={balance} kidName={selectedKid} />
-            <TransactionForm kidName={selectedKid} onSubmit={addTransaction} />
             <TransactionList transactions={transactions} onDelete={deleteTransaction} />
           </>
         )}
       </div>
+      
+      <FloatingActionButton onPress={() => setIsDrawerOpen(true)} />
+      
+      <TransactionDrawer
+        isOpen={isDrawerOpen}
+        onClose={() => setIsDrawerOpen(false)}
+        kidName={selectedKid}
+        onSubmit={addTransaction}
+      />
       
       <BottomNavigation selectedKid={selectedKid} onSelectKid={setSelectedKid} />
     </div>
