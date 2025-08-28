@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { supabase } from './supabase';
 import type { Kid, Transaction } from './types';
-import KidSelector from './components/KidSelector';
+import BottomNavigation from './components/BottomNavigation';
 import BalanceDisplay from './components/BalanceDisplay';
 import TransactionForm from './components/TransactionForm';
 import TransactionList from './components/TransactionList';
@@ -91,14 +91,8 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 p-4">
-      <div className="max-w-2xl mx-auto">
-        <h1 className="text-3xl font-bold text-center text-gray-800 mb-6 pt-4">
-          Kids Money Tracker
-        </h1>
-        
-        <KidSelector selectedKid={selectedKid} onSelectKid={setSelectedKid} />
-        
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 pb-20">
+      <div className="max-w-2xl mx-auto p-4">
         {error && (
           <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg mb-4">
             {error}
@@ -117,6 +111,8 @@ function App() {
           </>
         )}
       </div>
+      
+      <BottomNavigation selectedKid={selectedKid} onSelectKid={setSelectedKid} />
     </div>
   );
 }
