@@ -1,4 +1,4 @@
-import { Kid } from '../types';
+import type { Kid } from '../types';
 
 interface KidSelectorProps {
   selectedKid: Kid;

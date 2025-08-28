@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { supabase } from './supabase';
-import { Kid, Transaction } from './types';
+import type { Kid, Transaction } from './types';
 import KidSelector from './components/KidSelector';
 import BalanceDisplay from './components/BalanceDisplay';
 import TransactionForm from './components/TransactionForm';

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Kid, TransactionType } from '../types';
+import type { Kid, TransactionType } from '../types';
 
 interface TransactionFormProps {
   kidName: Kid;
